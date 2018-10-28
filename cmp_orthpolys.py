@@ -15,8 +15,8 @@ plt.ion()
 
 exec(open('/home/xyy/Documents/research/poly-orth/ex/weighted_orthpoly_solver.py').read())
 
-#f = lambda x: abs(x)
-f = lambda x: 1/(1+x**2)
+f = lambda x: abs(x)
+#f = lambda x: 1/(1+x**2)
 #f = lambda x: sin(10*pi*x+0.1)
 
 f_weighting = lambda x: 1
@@ -29,14 +29,22 @@ n_deg = 100
 x_sample_leg = nppoly.legendre.legroots(1*(np.arange(n_deg+2)==n_deg+1))
 y_sample_leg = f(x_sample_leg)
 coef_l = nppoly.legendre.legfit(x_sample_leg, y_sample_leg, n_deg) \
-         * sqrt(np.arange(n_deg+1)+0.5)
+         / sqrt(np.arange(n_deg+1)+0.5)
+
+coef_w = np.linalg.solve(dot(nppoly.chebyshev.chebvander(x_sample_che, n_deg), basis_repr_coef), y_sample_che)
 
 # Coefficients for weighted orthogonal polynomials.
 #x_sample_che = sin(pi * (np.arange(n_deg+1)-(n_deg)/2)/(n_deg+1))
-x_sample_che = y_sample_leg
+x_sample_che = x_sample_leg
 y_sample_che = f(x_sample_che)
 basis_repr_coef = get_orthpoly(n_deg, f_weighting, 10)
 coef_w = np.linalg.solve(dot(nppoly.chebyshev.chebvander(x_sample_che, n_deg), basis_repr_coef), y_sample_che)
+
+R = dot(nppoly.chebyshev.chebvander(x_sample_che, n_deg), basis_repr_coef)
+S = sqrt(arange(n_deg+1)+0.5) * lege.legvander(x_sample_che, n_deg)
+print('Maxabs polyvander =', maxabs(R-S))
+print('Cond              =', np.linalg.cond(S))
+#lege.Legendre.basis(ii) * sqrt(ii + 0.5)
 
 # Check accuracy of the generated polynomials.
 n_b = 100
