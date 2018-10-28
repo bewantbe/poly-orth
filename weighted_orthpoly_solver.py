@@ -59,9 +59,12 @@ def orthpoly_coef(f, f_weighting, n_deg, **kwarg):
         basis_repr_coef = get_orthpoly(n_deg, f_weighting, 100, **kwarg)
         V = dot(cheb.chebvander(x_sample, n_deg), basis_repr_coef)
 
+    if f == None:
+        # Return Pseudo-Vandermonde matrix.
+        return V
+
     y_sample = f(x_sample)
     coef = np.linalg.solve(V, y_sample)
-
     return coef
 
 # vim: et sw=4 sts=4
