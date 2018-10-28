@@ -1,12 +1,7 @@
 #
 
-import numpy as np
-import numpy.polynomial as nppoly
-import numpy.polynomial.chebyshev  as cheb
-import numpy.polynomial.legendre   as lege
-from numpy import exp, cos
-
-exec(open('common_imports_plot.py').read())
+exec(open('imports_numpy.py').read())
+exec(open('imports_plot.py').read())
 
 #from weighted_orthpoly_solver import get_orthpoly
 exec(open('weighted_orthpoly_solver.py').read())
@@ -22,8 +17,8 @@ basis_repr_coef = get_orthpoly(n_deg, f_weighting, 10)
 
 ii = 99
 jj = 3
-ff = nppoly.chebyshev.Chebyshev(basis_repr_coef[:, ii])
-gg = nppoly.chebyshev.Chebyshev(basis_repr_coef[:, jj])
+ff = cheb.Chebyshev(basis_repr_coef[:, ii])
+gg = cheb.Chebyshev(basis_repr_coef[:, jj])
 
 ff1 = lege.Legendre.basis(ii) * sqrt(ii + 0.5)
 gg1 = lege.Legendre.basis(jj) * sqrt(jj + 0.5)
@@ -44,8 +39,8 @@ print('The <ff, gg>rho   =', s)
 ss = np.zeros((20, 20))
 for ii in range(ss.shape[0]):
     for jj in range(ss.shape[1]):
-        ff = nppoly.chebyshev.Chebyshev(basis_repr_coef[:, ii])
-        gg = nppoly.chebyshev.Chebyshev(basis_repr_coef[:, jj])
+        ff = cheb.Chebyshev(basis_repr_coef[:, ii])
+        gg = cheb.Chebyshev(basis_repr_coef[:, jj])
         ss[ii,jj] = sum([ff(x)*gg(x)* f_weighting(x) * w for x, w in zip(x_sampling, int_weight)])
 
 figure(14); clf()
