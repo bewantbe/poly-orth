@@ -1,7 +1,7 @@
 # Utilities for generating orthogonal polynomials.
 
 import numpy as np
-from numpy import pi, sqrt, sin, dot, sum, sign
+from numpy import pi, sqrt, sin, dot, sum, sign, arange
 from numpy.linalg import inv, qr, cholesky
 
 import numpy.polynomial.chebyshev  as cheb
@@ -46,5 +46,22 @@ def get_orthpoly(n_deg, f_weighting, n_extra_point = 10, return_coef = True, rep
         else:
             polys = [lege.Legendre (repr_coef[:,i]) for i in range(n_deg+1)]
         return polys
-    
+
+def orthpoly_coef(f, f_weighting, n_deg, **kwarg):
+    if f_weighting == 'chebyshev':
+        x_sample = sin( pi * (-n_deg/2 + arange(n_deg+1))/(n_deg+1) )
+        V = cheb.chebvander(x_sample, n_deg)
+    elif f_weighting == 'legendre':
+        x_sample = lege.legroots(1*(arange(n_deg+2)==n_deg+1))
+        V = sqrt(arange(n_deg+1)+0.5) * lege.legvander(x_sample, n_deg)
+    else:
+        x_sample = lege.legroots(1*(arange(n_deg+2)==n_deg+1))
+        basis_repr_coef = get_orthpoly(n_deg, f_weighting, 100, **kwarg)
+        V = dot(cheb.chebvander(x_sample, n_deg), basis_repr_coef)
+
+    y_sample = f(x_sample)
+    coef = np.linalg.solve(V, y_sample)
+
+    return coef
+
 # vim: et sw=4 sts=4

@@ -67,6 +67,14 @@ coefs = np.vstack([
  coef_w,
  ])
 
+coefs_v = np.vstack([
+ orthpoly_coef(f, 'chebyshev', n_deg),
+ orthpoly_coef(f, 'legendre', n_deg),
+ orthpoly_coef(f, f_weighting, n_deg),
+ ])
+
+print('Verify coef =', maxabs(coefs - coefs_v), '(Must be zero)')
+
 poly_name = ['Cheb', 'Leg', 'weight']
 
 figure(10); clf()
