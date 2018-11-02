@@ -7,7 +7,7 @@ exec(open('weighted_orthpoly_solver.py').read())
 import numpy.polynomial as nppoly
 
 #f = lambda x: abs(x)
-f = lambda x: np.maximum(0, x)**10
+#f = lambda x: np.maximum(0, x)**10
 #f = lambda x: 1/(1+(x+0.01)**2)
 #f = lambda x: sin(10*pi*x+0.1)
 #f = lambda x: x**30
@@ -15,6 +15,7 @@ f = lambda x: np.maximum(0, x)**10
 #f = lambda x: tanh(3*x+0.01)
 #f = nppoly.legendre.Legendre.basis(20)
 #f = nppoly.chebyshev.Chebyshev.basis(20)
+f = lambda x: (x+1)*sin(1/(x+1))
 
 #f_weighting = lambda x: 1
 #f_weighting = lambda x: exp(-x*x)
