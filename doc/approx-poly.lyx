@@ -1,0 +1,1388 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-std
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Approximation Theory Notes
+\end_layout
+
+\begin_layout Section
+Approximation
+\end_layout
+
+\begin_layout Standard
+See Ref.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gottlieb_numerical_1977,trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+.
+ A field active in 1910s Bernstein et al.
+\end_layout
+
+\begin_layout Subsection
+Chebyshev Approximations
+\end_layout
+
+\begin_layout Standard
+Theorems for absolutely continuous functioins.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 7.1 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Assume 
+\begin_inset Formula $f,\ldots,f^{(\nu-1)}$
+\end_inset
+
+ be absolutely continuous on 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ and 
+\begin_inset Formula $f^{(\nu)}$
+\end_inset
+
+ is of bounded variation 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ Then for 
+\begin_inset Formula $\forall k\geq\nu+1$
+\end_inset
+
+, the Chebyshev coefficients of 
+\begin_inset Formula $f$
+\end_inset
+
+ satisfy
+\begin_inset Formula 
+\[
+\left|a_{k}\right|\leq\frac{2V}{\pi k(k-1)\cdots(k-\nu)}\leq\frac{2V}{\pi(k-\nu)^{\nu+1}}.
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:cheb-coef-cn"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 7.2 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Same condition as Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:cheb-coef-cn"
+
+\end_inset
+
+, then for 
+\begin_inset Formula $\forall n>\nu$
+\end_inset
+
+, its Chebyshev projections satisfy
+\begin_inset Formula 
+\[
+\left\Vert f-f_{n}\right\Vert _{\infty}\leq\frac{2V}{\pi\nu(n-\nu)^{\nu}}
+\]
+
+\end_inset
+
+and its Chebyshev interpolants satisfy
+\begin_inset Formula 
+\[
+\left\Vert f-p_{n}\right\Vert _{\infty}\leq\frac{4V}{\pi\nu(n-\nu)^{\nu}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Theorems for analytical functions.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 8.1 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Assume 
+\begin_inset Formula $f$
+\end_inset
+
+ analytic in 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ be analytically continuable to the open Bernstein ellipse 
+\begin_inset Formula $E_{\rho}$
+\end_inset
+
+ (note 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Bernstein ellipse 
+\begin_inset Formula $E_{\rho}$
+\end_inset
+
+: a ellipse of foci 1 and -1 in complex plane, with semimajor and semiminor
+ axis lengths summing to 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+), where it satisfies 
+\begin_inset Formula $\left|f(x)\right|\leq M$
+\end_inset
+
+ for some 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ Then its Chebyshev coefficients satisfy 
+\begin_inset Formula $\left|a_{0}\right|\leq M$
+\end_inset
+
+ and
+\begin_inset Formula 
+\[
+\left|a_{k}\right|\leq2M\rho^{-k},\quad k\geq1.
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:cheb-coef-analytical"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 8.2 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Same condition as Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:cheb-coef-analytical"
+
+\end_inset
+
+, then for 
+\begin_inset Formula $\forall n\geq0$
+\end_inset
+
+ its Chebyshev projections satisfy
+\begin_inset Formula 
+\[
+\left\Vert f-f_{n}\right\Vert _{\infty}\leq\frac{2M\rho^{-n}}{\rho-1}
+\]
+
+\end_inset
+
+and its Chebyshev interpolants satisfy
+\begin_inset Formula 
+\[
+\left\Vert f-p_{n}\right\Vert _{\infty}\leq\frac{4M\rho^{-n}}{\rho-1}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+General Theorms
+\end_layout
+
+\begin_layout Standard
+Theorem about how close the Chebyshev projection and interpolant to the
+ best polynomial approximant.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 16.1 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $f\in C\left([-1,1]\right)$
+\end_inset
+
+ have degree 
+\begin_inset Formula $n$
+\end_inset
+
+ Chebyshev projection 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+, Chebyshev interpolant 
+\begin_inset Formula $p_{n}$
+\end_inset
+
+, and best approximant 
+\begin_inset Formula $p_{n}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+ Then
+\begin_inset Formula 
+\[
+\left\Vert f-f_{n}\right\Vert _{\infty}\leq\left(4+\frac{4}{\pi^{2}}\log(n+1)\right)\left\Vert f-p_{n}^{*}\right\Vert _{\infty}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left\Vert f-p_{n}\right\Vert _{\infty}\leq\left(2+\frac{2}{\pi}\log(n+1)\right)\left\Vert f-p_{n}^{*}\right\Vert _{\infty}
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:bound-cheb-from-best"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Two theorems about near-best approximation.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 12.1 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Given 
+\begin_inset Formula $f\in C\left([-1,1]\right)$
+\end_inset
+
+, let 
+\begin_inset Formula $\rho$
+\end_inset
+
+ (
+\begin_inset Formula $1\leq\rho\leq\infty$
+\end_inset
+
+) be the parameter of the largest Bernstein ellipse 
+\begin_inset Formula $E_{\rho}$
+\end_inset
+
+ to which 
+\begin_inset Formula $f$
+\end_inset
+
+ can be analytically continued, and let 
+\begin_inset Formula $\{p_{n}\}$
+\end_inset
+
+ be the interpolants to 
+\begin_inset Formula $f$
+\end_inset
+
+ in any sequence of grids 
+\begin_inset Formula $\left\{ x_{k}\right\} $
+\end_inset
+
+ in 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ such that
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}M_{n}^{1/n}=\frac{1}{2},\quad M_{n}=\sup_{x\in[-1,1]}\left|l(x)\right|,\quad l(x)=\prod_{k=0}^{n}(x-x_{k}),
+\]
+
+\end_inset
+
+then the errors of such interpolant satisfy
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}\left\Vert f-p_{n}\right\Vert _{\infty}^{1/n}=\rho^{-1}.
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:near-best-condition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 15.1 in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ be the Lebesgue constant for a linear projection 
+\begin_inset Formula $L$
+\end_inset
+
+ of 
+\begin_inset Formula $C\left([-1,1]\right)$
+\end_inset
+
+ onto 
+\begin_inset Formula $\mathcal{P}_{n}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $f$
+\end_inset
+
+ be a function in 
+\begin_inset Formula $C\left([-1,1]\right)$
+\end_inset
+
+, 
+\begin_inset Formula $p=Lf$
+\end_inset
+
+ the corresponding polynomial approximant to 
+\begin_inset Formula $f$
+\end_inset
+
+, and 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ the best approximation.
+ Then
+\begin_inset Formula 
+\[
+\left\Vert f-p\right\Vert _{\infty}\leq(\Lambda+1)\left\Vert f-p^{*}\right\Vert _{\infty}
+\]
+
+\end_inset
+
+where the Lebesgue constant is defined as
+\begin_inset Formula 
+\[
+\Lambda\triangleq\sup_{f}\frac{\left\Vert p\right\Vert _{\infty}}{\left\Vert f\right\Vert _{\infty}}=\sup_{x\in[-1,1]}\sum_{j=0}^{n}\left|l_{j}(x)\right|,\quad l_{j}(x)=\frac{\prod_{k\neq j}(x-x_{k})}{\prod_{k\neq j}(x_{j}-x_{k})}.
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:bound-away-from-best"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:near-best-condition"
+
+\end_inset
+
+ and Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:bound-away-from-best"
+
+\end_inset
+
+ imply that 
+\begin_inset Formula $\lim_{n\rightarrow\infty}\Lambda_{n}^{1/n}=1$
+\end_inset
+
+ concludes near best convergent for 
+\begin_inset Formula $f\in C\left([-1,1]\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 2.2.1 (b) and (a stronger version)Theorem 3.1.4 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stahl_general_1992"
+literal "true"
+
+\end_inset
+
+.
+ See below for the symbols.
+\end_layout
+
+\end_inset
+
+Assume 
+\begin_inset Formula $c_{\mu}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{Int}\left(\mathrm{Pc}(S(\mu))\right)=\emptyset$
+\end_inset
+
+.
+ If
+\begin_inset Formula 
+\begin{equation}
+\lim_{n\rightarrow\infty}\gamma_{n}(\mu)^{1/n}=\frac{1}{\mathrm{cap}(S(\mu))}\label{eq:mu-reg}
+\end{equation}
+
+\end_inset
+
+for some subsequence 
+\begin_inset Formula $N\in\mathbb{N}$
+\end_inset
+
+, then we have 
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{n}\nu_{p_{n}(\mu;\cdot)}\rightarrow\omega_{S(\mu)}\quad\text{as}\ n\rightarrow\infty,\ n\in N\label{eq:zero-reg}
+\end{equation}
+
+\end_inset
+
+in the weak* sense.
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:coefn-to-root-dis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+See 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stahl_general_1992"
+literal "true"
+
+\end_inset
+
+: Definition 1.1.1, Appendix A.I, A.II, A.III, A.IV etc.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mu$
+\end_inset
+
+: a finite Borel measure on 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+ with compact support 
+\begin_inset Formula $S(\mu)$
+\end_inset
+
+ and infinitely many points.
+ 
+\begin_inset Formula $\mathrm{Pc}(S(\mu))$
+\end_inset
+
+ th polynomial convex hull of 
+\begin_inset Formula $S(\mu)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathrm{Int}$
+\end_inset
+
+: interior of 
+\begin_inset Formula $K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The uniquely existing orthonormal polynomials
+\begin_inset Formula 
+\[
+p_{n}(\mu;z)=\gamma_{n}(\mu)z^{n}+\cdots,\quad\gamma_{n}(\mu)>0,\ n\in\mathbb{N},
+\]
+
+\end_inset
+
+are defined by orthonoality relations
+\begin_inset Formula 
+\[
+\int p_{n}(\mu;z)\overline{p_{m}(\mu;z)}d\mu(z)=\delta_{n,m}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Counting measure of zeros of polynomial 
+\begin_inset Formula $P$
+\end_inset
+
+: 
+\begin_inset Formula $\nu_{P}$
+\end_inset
+
+, i.e.
+ places mass 1 to every zeros of 
+\begin_inset Formula $P$
+\end_inset
+
+ (counting multiplicity).
+ Then 
+\begin_inset Formula $\left\Vert \nu_{P}\right\Vert =\mathrm{deg}(P)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\nu_{P}/\mathrm{deg}(P)$
+\end_inset
+
+ the normalized counting measure.
+\end_layout
+
+\begin_layout Definition
+Carriers of measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Gamma(\mu):=\left\{ C\subseteq\mathbb{C}|C\ \text{a Borel set and}\ \mu(\mathbb{C\backslash C})=0\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Minimal-carrier capacity of the measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+c_{\mu}:=\inf\left\{ \mathrm{cap}(C)|C\in\Gamma(\mu),\ C\ \text{bounded}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Logarithmic energy:
+\begin_inset Formula 
+\[
+I(\mu)=\int\int\log\frac{1}{\left|z-t\right|}d\mu(t)d\mu(z).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The capacity of 
+\begin_inset Formula $K$
+\end_inset
+
+ is defined as
+\begin_inset Formula 
+\[
+\mathrm{cap}(K):=e^{-V_{K}},
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+V_{K}=\inf\left\{ I(\mu)\ |\ \mathrm{supp}(\mu)\subseteq K,\ \mu\geq0,\ \left\Vert \mu\right\Vert =1\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The logarithmic potential of measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is defined by 
+\begin_inset Formula 
+\[
+p(\mu;z)=\int\log\frac{1}{\left|z-t\right|}d\mu(t).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Weak* convergence 
+\begin_inset Formula $\mu_{n}\rightarrow\mu$
+\end_inset
+
+ means
+\begin_inset Formula 
+\[
+\int f\,d\mu_{n}\rightarrow\int f\,d\mu\quad\text{as}\ n\rightarrow\infty
+\]
+
+\end_inset
+
+for every 
+\begin_inset Formula $f$
+\end_inset
+
+ continuous on 
+\begin_inset Formula $\overline{\mathbb{C}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Equilibrium Measure 
+\begin_inset Formula $\omega_{K}$
+\end_inset
+
+ of compact positive capacity set 
+\begin_inset Formula $K\subseteq\overline{\mathbb{C}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+p(\omega_{K};z)=\int\log\frac{1}{\left|z-t\right|}d\omega_{K}(t)
+\]
+
+\end_inset
+
+with
+\begin_inset Formula 
+\[
+p(\omega_{K};z)\leq\log\frac{1}{\mathrm{cap}(K)}\quad\forall z\in\mathbb{C}
+\]
+
+\end_inset
+
+where 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $=$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ for quasi every 
+\begin_inset Formula $z\in K$
+\end_inset
+
+.
+ quasi everywhere: holds outside a set of zero capacity.
+\end_layout
+
+\begin_layout Standard
+Remarks:
+\end_layout
+
+\begin_layout Itemize
+Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:coefn-to-root-dis"
+
+\end_inset
+
+ says that the asymptotics of the leading coefficient tells the limiting
+ distribution of all zeros.
+\end_layout
+
+\begin_layout Itemize
+Once the equilibrium measure 
+\begin_inset Formula $\omega_{S(\mu)}$
+\end_inset
+
+ is approached, due to Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:near-best-condition"
+
+\end_inset
+
+ (see also the book 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+), the polynomials 
+\begin_inset Formula $\left\{ p_{n}(\mu;z)\right\} $
+\end_inset
+
+ is near optimal.
+\end_layout
+
+\begin_layout Itemize
+In the language of Book 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stahl_general_1992"
+literal "true"
+
+\end_inset
+
+, this property is called 
+\begin_inset Quotes eld
+\end_inset
+
+regular
+\begin_inset Quotes erd
+\end_inset
+
+ of the measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mu-reg"
+
+\end_inset
+
+) and 
+\begin_inset Quotes eld
+\end_inset
+
+regular
+\begin_inset Quotes erd
+\end_inset
+
+ asymptotic zero distribution (Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:zero-reg"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Now the remaining problem is the Criteria of Regularity.
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+By P.
+ Erdős and P.
+ Turán
+\end_layout
+
+\end_inset
+
+For 
+\begin_inset Formula $S(\mu)=[-1,1]$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu'(x)>0\ \text{a.e.}$
+\end_inset
+
+, then 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is regular.
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:erdos-reg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note: 
+\begin_inset Formula $\mu'(x)$
+\end_inset
+
+ is the Radon-Nikodym derivative of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ with respect to Lebesgue measure.
+ In this case, it is the usual derivative of 
+\begin_inset Formula $\mu([-1,x])$
+\end_inset
+
+ a.e..
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ullman's criterion.
+ See Theorem 4.1.4 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stahl_general_1992"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $c_{\mu}=\mathrm{cap}(S(\mu))$
+\end_inset
+
+ implies the regularity of 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Criterion 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+, Theorem 4.2.1 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stahl_general_1992"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ If
+\begin_inset Formula 
+\[
+\mathrm{cap}\left(\left\{ z\left|\limsup_{r\rightarrow0+}\frac{\log1/\mu(\Delta_{r}(z))}{\log1/r}<\infty\right.\right\} \right)=\mathrm{cap}(S(\mu))
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Delta_{r}(z)=\left\{ z'|\left|z'-z\right|\leq r\right\} $
+\end_inset
+
+, then 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is regular.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 9.2 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "freud_orthogonal_1971"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Same condition as 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:erdos-reg"
+
+\end_inset
+
+, then the distribution of zeros in interval 
+\begin_inset Formula $[\cos\theta_{1},\cos\theta_{2}]$
+\end_inset
+
+ follows
+\begin_inset Formula 
+\[
+\lim_{n\rightarrow\infty}\frac{1}{n}\nu_{p_{n}(\mu;z)}([\cos\theta_{2},\cos\theta_{1}])=\frac{\theta_{2}-\theta_{1}}{\pi}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Root Finding
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Theorem 18.1 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trefethen_approximation_2013"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The roots of the polynomial
+\begin_inset Formula 
+\[
+p(x)=\sum_{k=0}^{n}a_{k}T_{k}(x),\quad a_{n}\neq0
+\]
+
+\end_inset
+
+are the eigenvalues of the matrix (Called colleague matrix)
+\begin_inset Formula 
+\[
+C=\begin{bmatrix}0 & 1\\
+\frac{1}{2} & 0 & \frac{1}{2}\\
+ & \frac{1}{2} & 0 & \frac{1}{2}\\
+ &  & \ddots & \ddots\\
+ &  &  & \frac{1}{2} & 0
+\end{bmatrix}-\frac{1}{2a_{n}}\begin{bmatrix}\\
+\\
+\\
+\\
+a_{0} & a_{1} & a_{2} & \cdots & a_{n-1}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let
+\begin_inset Formula 
+\[
+\vec{v}(x)=\begin{bmatrix}T_{0}(x) & T_{1}(x) & \cdots & T_{n-1}(x)\end{bmatrix}^{T}
+\]
+
+\end_inset
+
+then due to the 3-term recurrence relation
+\begin_inset Formula 
+\[
+C\vec{v}(x)=x\vec{v}(x)-\frac{1}{2a_{n}}\begin{bmatrix}0\\
+0\\
+\vdots\\
+p(x)
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Remarks:
+\end_layout
+
+\begin_layout Itemize
+Easily extend to other orthogonal polynomials.
+ Notably other near-best polynomial basis.
+\end_layout
+
+\begin_layout Itemize
+The eigenvalues of the matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ can be solved in 
+\begin_inset Formula $O(n^{2})$
+\end_inset
+
+ time instead of 
+\begin_inset Formula $O(n^{3})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Not limited to polynomial root finding.
+ It can be used for analytical function root finding, along real line.
+\end_layout
+
+\begin_layout Itemize
+The extra roots (for non-polynomial) are clustered along the maximum Bernstein
+ ellipse.
+\end_layout
+
+\begin_layout Itemize
+It is a global root finding method.
+\end_layout
+
+\begin_layout Itemize
+When apply to non-analytical function, the extra roots are distributed near
+ the real line.
+ The partial sums of Taylor series also has roots clustering along the circle
+ of convergence (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "blatt_jentzsch-szego_1988"
+literal "true"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+By transform the last row of 
+\begin_inset Formula $C$
+\end_inset
+
+ to first column (or row?), may reduce rounding errors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "fouriers"
+options "siam"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
