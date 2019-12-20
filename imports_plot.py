@@ -14,7 +14,7 @@ if "DISPLAY" not in os.environ:
 
 # For drawing
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import figure, clf, plot, scatter, xlabel, ylabel, xlim, ylim, matshow, colorbar, title, legend, semilogy, semilogx
+from matplotlib.pyplot import figure, clf, plot, scatter, xlabel, ylabel, xlim, ylim, matshow, colorbar, title, legend, semilogy, semilogx, hist
 
 plt.ion()
 
